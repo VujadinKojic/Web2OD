@@ -6,10 +6,22 @@ import { AppComponent } from './app.component';
 import { LoginregistracijaComponent } from './Komponente/loginregistracija/loginregistracija.component';
 import { DodajproizvodComponent } from './Komponente/dodajproizvod/dodajproizvod/dodajproizvod.component';
 import { VerifikacijaComponent } from './Komponente/verifikacija/verifikacija/verifikacija.component';
-
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { PorudzbineComponent } from './Komponente/porudzbine/porudzbine/porudzbine.component';
 @NgModule({
-  declarations: [LoginregistracijaComponent, DodajproizvodComponent, VerifikacijaComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    LoginregistracijaComponent,
+    DodajproizvodComponent,
+    VerifikacijaComponent,
+    AppComponent,
+    PorudzbineComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

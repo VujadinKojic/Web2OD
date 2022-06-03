@@ -1,1 +1,46 @@
-<p>verifikacija works!</p>
+<div class="div">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Korisnicko ime</th>
+        <th scope="col">Email</th>
+        <th scope="col">Datum rodjenja</th>
+        <th scope="col">Adresa</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let korisnik of korisnici">
+        <td>{{ korisnik.korime }}</td>
+        <td>{{ korisnik.email }}</td>
+        <td>{{ korisnik.rodjenje }}</td>
+        <td>{{ korisnik.adresa }}</td>
+        <td>
+          <div
+            *ngIf="nijeverifikovan(korisnik.statuskorisnika); else elseBlock"
+          >
+            <button
+              type="button"
+              class="btn btn-success"
+              (click)="verifikuj(korisnik.id, 'prihvacen')"
+            >
+              Odobri nalog
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="verifikuj(korisnik.id, 'odbijen')"
+            >
+              Odbij nalog
+            </button>
+          </div>
+          <ng-template #elseBlock>
+            <div>
+              <div>{{ korisnik.statuskorisnika }}}</div>
+            </div>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

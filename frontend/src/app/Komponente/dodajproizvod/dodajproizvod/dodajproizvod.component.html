@@ -1,1 +1,65 @@
-<p>dodajproizvod works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <form
+        class="px-4 py-3"
+        [formGroup]="dodaajproizvodForma"
+        autocomplete="off"
+      >
+        <div class="form-group">
+          <input
+            type="text"
+            id="korime"
+            class="form-control"
+            placeholder="ime proizvoda"
+            formControlName="ime"
+          />
+          <label class="form-label" for="loginPassword">IME</label>
+        </div>
+        <div class="form-group">
+          <input
+            class="form-control"
+            placeholder="napisi proizvode"
+            type="text"
+            formControlName="sastojci"
+          />
+          <label class="form-label" for="loginPassword">SASTOJCI</label>
+        </div>
+        <div class="form-group">
+          <input
+            class="form-control"
+            placeholder="cena"
+            type="number"
+            formControlName="cena"
+          />
+          <label class="form-label" for="loginPassword">CENA</label>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-dark" type="button" (click)="dodajproizvod()">
+            DODAJ
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm">
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">I M E</th>
+            <th scope="col">SASTOJCI</th>
+            <th scope="col">C E N A</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let proizvod of proizvodi">
+            <td>{{ proizvod.ime }}</td>
+            <td>
+              {{ proizvod.sastojci }}
+            </td>
+            <td>{{ proizvod.cena }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

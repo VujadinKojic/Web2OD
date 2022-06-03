@@ -1,0 +1,22 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Address</th>
+      <th scope="col">Price</th>
+      <th scope="col">Products</th>
+      <th>Status(Accepted?)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let porudzbina of porudzbine">
+      <td>{{ porudzbina.adresa }}</td>
+      <td>{{ porudzbina.cena }}</td>
+      <td *ngFor="let proizvod of porudzbina.proizvodi">{{ proizvod.ime }}</td>
+      <td *ngIf="porudzbina.prihvacena; else elseBlock2">Accepted</td>
+      <ng-template #elseBlock2>
+        <td>Not accepted</td>
+        >
+      </ng-template>
+    </tr>
+  </tbody>
+</table>

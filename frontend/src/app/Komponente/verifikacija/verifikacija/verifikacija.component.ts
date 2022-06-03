@@ -8,45 +8,53 @@ import { Korisnik } from 'src/app/Modeli/Korisnik';
 })
 export class VerifikacijaComponent implements OnInit {
   korisnici: Korisnik[] = [];
-  // verifikuj(id: number, accountStatus: string) {
-  //   console.log('id', id);
-  //   this.userService.verificateUser(id, accountStatus).subscribe(
-  //     (data: Korisnik) => {
-  //       console.log(data);
-  //       if (data === null) {
-  //         //this.toastr.error('Nema korisnika.');
-  //       } else {
-  //         for (let i = 0; i < this.korisnici.length; i++) {
-  //           if (data.id === this.korisnici[i].id) {
-  //             this.korisnici[i].statuskorisnika = data.statuskorisnika;
-  //             return;
-  //           }
-  //         }
-  //       }
-  //     },
-  //     (error) => {
-  //       this.toastr.error('Desila se neka greska.');
-  //     }
-  //   );
-  // }
+  verifikuj(id: number, status: string) {
+    console.log('id', id);
+    // this.userService.verificateUser(id, accountStatus).subscribe(
+    //   (data: Korisnik) => {
+    //     console.log(data);
+    //     if (data === null) {
+    //       //this.toastr.error('Nema korisnika.');
+    //     } else {
+    //       for (let i = 0; i < this.korisnici.length; i++) {
+    //         if (data.id === this.korisnici[i].id) {
+    //           this.korisnici[i].statuskorisnika = data.statuskorisnika;
+    //           return;
+    //         }
+    //       }
+    //     }
+    //   },
+    //   (error) => {
+    //     this.toastr.error('Desila se neka greska.');
+    //   }
+    // );
+  }
+  nijeverifikovan(stanje: string) {
+    if (stanje === 'provera') {
+      return true;
+    } else {
+      return false;
+    }
+  }
   constructor() {}
 
   ngOnInit(): void {
-  //   this.userService.getUsers().subscribe(
-  //     (data: Korisnik[]) => {
-  //       console.log(data);
-  //       if (data === null) {
-  //         this.toastr.error('Nema korisnika.');
-  //       } else {
-  //         for (let i = 0; i < data.length; i++) {
-  //           console.log(data[i]);
-  //           this.korisnici.push(data[i]);
-  //         }
-  //       }
-  //     },
-  //     (error) => {
-  //       this.toastr.error('Desila se neka greska.');
-  //     }
-  //   );
-  // }
+    //   this.userService.getUsers().subscribe(
+    //     (data: Korisnik[]) => {
+    //       console.log(data);
+    //       if (data === null) {
+    //         this.toastr.error('Nema korisnika.');
+    //       } else {
+    //         for (let i = 0; i < data.length; i++) {
+    //           console.log(data[i]);
+    //           this.korisnici.push(data[i]);
+    //         }
+    //       }
+    //     },
+    //     (error) => {
+    //       this.toastr.error('Desila se neka greska.');
+    //     }
+    //   );
+    // }
+  }
 }

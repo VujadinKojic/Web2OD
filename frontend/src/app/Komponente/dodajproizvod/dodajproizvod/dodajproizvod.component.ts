@@ -12,15 +12,15 @@ export class DodajproizvodComponent implements OnInit {
   dodaajproizvodForma = new FormGroup({
     ime: new FormControl('', Validators.required),
     sastojci: new FormControl('', Validators.required),
-    cena: new FormControl(0, [Validators.required, Validators.min(0)]),
+    cena: new FormControl('', [Validators.required, Validators.min(0)]),
   });
   dodajproizvod() {
     if (this.dodaajproizvodForma.valid) {
       let proizvod = new Proizvod();
       proizvod.ime = this.dodaajproizvodForma.controls['ime'].value;
       proizvod.sastojci = this.dodaajproizvodForma.controls['sastojci'].value;
-      proizvod.price = this.dodaajproizvodForma.controls['cena'].value;
-
+      proizvod.cena = this.dodaajproizvodForma.controls['cena'].value;
+      console.log('Proizvod', proizvod);
       // this.proizvodService.addProduct(proizvod).subscribe(
       //   (data: Proizvod) => {
       //     if (data === null) {
@@ -43,9 +43,7 @@ export class DodajproizvodComponent implements OnInit {
     }
   }
 
-  constructor() // private router: Router, // private productService: ProductService,
-  // private toastr: ToastrService
-  {}
+  constructor() {} // private toastr: ToastrService // private router: Router, // private productService: ProductService,
 
   ngOnInit(): void {
     // this.productService.getProducts().subscribe(

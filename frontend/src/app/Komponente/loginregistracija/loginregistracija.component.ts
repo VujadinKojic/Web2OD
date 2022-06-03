@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Korisnik } from 'src/app/Modeli/Korisnik';
 
@@ -9,6 +14,9 @@ import { Korisnik } from 'src/app/Modeli/Korisnik';
   styleUrls: ['./loginregistracija.component.css'],
 })
 export class LoginregistracijaComponent implements OnInit {
+  greska: string = '';
+  regg: boolean = false;
+  logg: boolean = true;
   loginForma = new FormGroup({
     korisnickoime: new FormControl('', Validators.required),
     lozinka: new FormControl('', Validators.required),
@@ -38,6 +46,8 @@ export class LoginregistracijaComponent implements OnInit {
       let login: Korisnik = new Korisnik();
       login.korime = this.loginForma.controls['korisnickoime'].value;
       login.lozinka = this.loginForma.controls['lozinka'].value;
+      console.log('Login', login);
+      this.greska = '';
       // this.service.login(login).subscribe(
       //   (data: Token) => {
       //     if (data === null) {
@@ -73,7 +83,7 @@ export class LoginregistracijaComponent implements OnInit {
       //   }
       // );
     } else {
-      console.log('nije usao');
+      this.greska = 'Popunite pravilno polja.';
     }
   }
   onSelectFile(e: any) {
@@ -85,13 +95,35 @@ export class LoginregistracijaComponent implements OnInit {
       };
     }
   }
-  registrecija() {
+  registracija() {
+    let korisnik2: Korisnik = new Korisnik();
+    korisnik2.korime = this.registracijaForma.controls['korisnickoime'].value;
+    korisnik2.email = this.registracijaForma.controls['email'].value;
+    korisnik2.lozinka = this.registracijaForma.controls['lozinka'].value;
+    korisnik2.ime = this.registracijaForma.controls['ime'].value;
+    korisnik2.prezime = this.registracijaForma.controls['prezime'].value;
+    korisnik2.rodjenje = this.registracijaForma.controls['rodjenje'].value;
+    korisnik2.adresa = this.registracijaForma.controls['adresa'].value;
+    korisnik2.slika = this.url;
+    korisnik2.tipkorisnika =
+      this.registracijaForma.controls['tipkorisnika'].value;
+
+    if (
+      korisnik2.tipkorisnika == 'porucilac' ||
+      korisnik2.tipkorisnika == 'admin'
+    ) {
+      korisnik2.statuskorisnika = 'prihvacen';
+    } else {
+      korisnik2.statuskorisnika = 'provera';
+    }
+    console.log(korisnik2);
     if (
       this.registracijaForma.valid &&
       this.url.length !== 0 &&
       this.registracijaForma.controls['lozinka'].value ===
         this.registracijaForma.controls['lozinka2'].value
     ) {
+      this.greska = '';
       var givenDate = this.registracijaForma.controls['rodjenje'].value;
       var currentDate = new Date();
       givenDate = new Date(givenDate);
@@ -117,6 +149,7 @@ export class LoginregistracijaComponent implements OnInit {
         } else {
           korisnik.statuskorisnika = 'provera';
         }
+        console.log('Registracija', korisnik);
         //     this.service.register(korisnik).subscribe(
         //       (data) => {
         //         console.log('Vraceni podaci' + data);
@@ -130,10 +163,23 @@ export class LoginregistracijaComponent implements OnInit {
         // } else {
         //   this.alertError = 'Popunite pravilno sve parametre za registraciju.';
         // }
+      } else {
+        this.greska = 'Datum mora biti stariji od danasnjeg.';
       }
+    } else {
+      this.greska = 'Popinite sva polja za unos. Lozinke se moraju poklapati.';
     }
   }
-
+  reg() {
+    this.logg = false;
+    this.regg = true;
+    console.log(this.logg, this.regg);
+  }
+  log() {
+    this.logg = true;
+    this.regg = false;
+    console.log(this.logg, this.regg);
+  }
   constructor(
     //private service: UserService,
     private router: Router //private toastr: ToastrService
