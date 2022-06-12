@@ -1,0 +1,24 @@
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Address</th>
+      <th scope="col">Price</th>
+      <th scope="col">Products</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let np of neprihvaceneporudzbine">
+      <td>{{ np.adresa }}</td>
+      <td>{{ np.cena }}</td>
+      <td *ngFor="let p of np.proizvodi">
+        {{ p.ime }} kolicina: {{ p.kolicina }}
+      </td>
+      <td *ngIf="!np.prihvacena">
+        <button type="button" class="btn btn-dark" (click)="prihvati(np.id)">
+          Prihvati porudzbinu
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

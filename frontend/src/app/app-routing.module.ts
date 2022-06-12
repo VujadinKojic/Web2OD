@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DodajproizvodComponent } from './Komponente/dodajproizvod/dodajproizvod/dodajproizvod.component';
 import { LoginregistracijaComponent } from './Komponente/loginregistracija/loginregistracija.component';
+import { NovatrenutnaporudzbinaComponent } from './Komponente/novatrenutnaporudzbina/novatrenutnaporudzbina/novatrenutnaporudzbina.component';
 import { PorudzbineComponent } from './Komponente/porudzbine/porudzbine/porudzbine.component';
 import { VerifikacijaComponent } from './Komponente/verifikacija/verifikacija/verifikacija.component';
 
@@ -11,6 +12,10 @@ const routes: Routes = [
   { path: 'dodajproizvod', component: DodajproizvodComponent },
   { path: 'verifikuj', component: VerifikacijaComponent },
   { path: 'porudzbine', component: PorudzbineComponent },
+  {
+    path: 'novatrenutnaporudzbina',
+    component: NovatrenutnaporudzbinaComponent,
+  },
 ];
 
 @NgModule({

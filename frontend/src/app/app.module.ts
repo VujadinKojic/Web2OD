@@ -13,6 +13,8 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { PorudzbineComponent } from './Komponente/porudzbine/porudzbine/porudzbine.component';
+import { NovatrenutnaporudzbinaComponent } from './Komponente/novatrenutnaporudzbina/novatrenutnaporudzbina/novatrenutnaporudzbina.component';
+import { NoveporudzbineComponent } from './Komponente/noveporudzbine/noveporudzbine/noveporudzbine.component';
 @NgModule({
   declarations: [
     LoginregistracijaComponent,
@@ -20,6 +22,8 @@ import { PorudzbineComponent } from './Komponente/porudzbine/porudzbine/porudzbi
     VerifikacijaComponent,
     AppComponent,
     PorudzbineComponent,
+    NovatrenutnaporudzbinaComponent,
+    NoveporudzbineComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

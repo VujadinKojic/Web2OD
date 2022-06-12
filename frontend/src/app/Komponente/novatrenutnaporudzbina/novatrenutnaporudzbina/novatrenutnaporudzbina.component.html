@@ -1,0 +1,117 @@
+<div *ngIf="!imatekucaporudzbina; else trenutna">
+  <div>
+    <div>
+      <form class="px-4 py-3" [formGroup]="porudzbinaForma" autocomplete="off">
+        <div class="form-group">
+          <button
+            type="button"
+            class="btn btn-dark"
+            (click)="posaljiporudzbinu()"
+          >
+            Potvrdi porudzbinu
+          </button>
+        </div>
+
+        <div class="form-group">
+          <input
+            class="form-control"
+            placeholder="unesite adresu"
+            type="text"
+            formControlName="adresa"
+          />
+          <label class="form-label" for="loginPassword">A D R E S A</label>
+        </div>
+        <div class="form-group">
+          <input
+            class="form-control"
+            placeholder="unesite komentar"
+            type="text"
+            formControlName="komentar"
+          />
+          <label class="form-label" for="loginPassword">K O M E N T A R</label>
+        </div>
+      </form>
+    </div>
+    <div class="table table-dark">
+      <thead>
+        <tr>
+          <th>Ukupna cena</th>
+          <th>{{ porudzbina.cena + 300 }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let proizvod of porudzbina.proizvodi">
+          <td>{{ proizvod.ime }}</td>
+          <td>
+            {{ proizvod.sastojci }}
+          </td>
+
+          <td>
+            <button
+              type="button"
+              class="btn btn-success"
+              (click)="smanjikolicinu(proizvod.id)"
+            >
+              DODAJ
+            </button>
+          </td>
+          <td>
+            {{ proizvod.kolicina }}
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-success"
+              (click)="povecajkolicinu(proizvod.id)"
+            >
+              UMANJI
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </div>
+  </div>
+
+  <div class="col-sm">
+    <div>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">I M E</th>
+            <th scope="col">S A S T O J C I</th>
+            <th scope="col">C E N A</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let proizvod of proizvodi">
+            <td>{{ proizvod.ime }}</td>
+            <td>
+              {{ proizvod.sastojci }}
+            </td>
+            <td>{{ proizvod.cena }}</td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="dodiajproizvod(proizvod.id)"
+                value="{{ proizvod.id }}"
+              >
+                DODAJ
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<ng-template #trenutna>
+  <div class="card text-center">
+    <div class="card-header">Trenutna porudzbina</div>
+    <div class="card-body">
+      <h5 class="card-title">Vreme do kraj porudzbine</h5>
+      <p class="card-text"></p>
+    </div>
+    <div class="card-footer text-muted">2 days ago</div>
+  </div>
+</ng-template>
