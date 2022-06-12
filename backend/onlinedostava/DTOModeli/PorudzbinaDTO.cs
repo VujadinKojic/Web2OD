@@ -17,7 +17,7 @@ namespace onlinedostava.DTOModeli
 		int korisnikovId;
 		ICollection<ProizvodiPorudzbineDTO> proizvodi;
 		int idDostavljaca;
-		KorisnikDto korisnik;
+		KorisnikDTO korisnik;
 
 		public PorudzbinaDTO(int id, string adresa, string komentar, double cena, int vremedostave, bool prihvacena, string vremeprihvatanja, int korisnikovId, ICollection<ProizvodiPorudzbineDTO> proizvodi, int idDostavljaca)
 		{
@@ -47,6 +47,6 @@ namespace onlinedostava.DTOModeli
 		public int KorisnikovId { get => korisnikovId; set => korisnikovId = value; }
 		public ICollection<ProizvodiPorudzbineDTO> Proizvodi { get => proizvodi; set => proizvodi = value; }
 		public int IdDostavljaca { get => idDostavljaca; set => idDostavljaca = value; }
-		public KorisnikDto Korisnik { get => korisnik; set => korisnik = value; }
+		public KorisnikDTO Korisnik { get => korisnik; set => korisnik = value; }
 	}
 }

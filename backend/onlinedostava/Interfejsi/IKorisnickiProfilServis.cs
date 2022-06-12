@@ -10,8 +10,9 @@ namespace onlinedostava.Interfejsi
 	public interface IKorisnickiProfilServis
 	{
 		KorisnikDTO RegistrujSe(KorisnikDTO k);
-		KorisnikDTO UlogujSe(KorisnikDTO k);
+		string UlogujSe(KorisnikDTO k);
 		KorisnikDTO ApdejtujProfil(KorisnikDTO k);
 		KorisnikDTO PronadjiProfil(IHeaderDictionary header);
+		KorisnikDTO VerifikujProfil(KorisnikDTO k);
 	}
 }

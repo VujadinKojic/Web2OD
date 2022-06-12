@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Korisnik } from 'src/app/Modeli/Korisnik';
+import { KorisnickiservisService } from 'src/app/Servisi/korisnickiservis.service';
 
 @Component({
   selector: 'app-loginregistracija',
@@ -150,19 +151,15 @@ export class LoginregistracijaComponent implements OnInit {
           korisnik.statuskorisnika = 'provera';
         }
         console.log('Registracija', korisnik);
-        //     this.service.register(korisnik).subscribe(
-        //       (data) => {
-        //         console.log('Vraceni podaci' + data);
-        //         this.router.navigateByUrl('/login');
-        //       },
-        //       (error) => {
-        //         this.toastr.error('Desila se neka greska.');
-        //       }
-        //     );
-        //   }
-        // } else {
-        //   this.alertError = 'Popunite pravilno sve parametre za registraciju.';
-        // }
+        this.korser.registracija(korisnik).subscribe(
+          (data: Korisnik) => {
+            console.log('Vraceni podaci' + data);
+            this.router.navigateByUrl('/login');
+          },
+          () => {
+            console.log();
+          }
+        );
       } else {
         this.greska = 'Datum mora biti stariji od danasnjeg.';
       }
@@ -181,7 +178,7 @@ export class LoginregistracijaComponent implements OnInit {
     console.log(this.logg, this.regg);
   }
   constructor(
-    //private service: UserService,
+    private korser: KorisnickiservisService,
     private router: Router //private toastr: ToastrService
   ) {}
 

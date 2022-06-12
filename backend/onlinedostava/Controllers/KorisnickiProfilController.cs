@@ -30,8 +30,8 @@ namespace onlinedostava.Controllers
 		[Route("login")]
 		public IActionResult Login(KorisnikDTO k)
 		{
-			KorisnikDTO kor = korisnickiprofilservis.UlogujSe(k);
-			return Ok(kor);
+			string token = korisnickiprofilservis.UlogujSe(k);
+			return Ok(token);
 		}
 
 		[HttpPost]
@@ -42,11 +42,19 @@ namespace onlinedostava.Controllers
 			return Ok(kor);
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("pronadjiprofil")]
 		public IActionResult PronadjiProfil()
 		{
 			KorisnikDTO kor = korisnickiprofilservis.PronadjiProfil(Request.Headers);
+			return Ok(kor);
+		}
+
+		[HttpPost]
+		[Route("verifikujkorisnika")]
+		public IActionResult VerifikujKorisnika(KorisnikDTO k)
+		{
+			KorisnikDTO kor = korisnickiprofilservis.VerifikujProfil(k);
 			return Ok(kor);
 		}
 	}

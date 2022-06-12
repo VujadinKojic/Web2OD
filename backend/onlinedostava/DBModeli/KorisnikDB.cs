@@ -19,12 +19,12 @@ namespace onlinedostava.DBModeli
 		string prezime;
 		string rodjenje;
 		string adresa;
-		string slika;
+		byte[] slika;
 		string tipkorisnika;
 		string statuskorisnika;
 		ICollection<PorudzbinaDB> porudzbine;
 
-		public KorisnikDB(int id, string korime, string email, string lozinka, string ime, string prezime, string rodjenje, string adresa, string slika, string tipkorisnika, string statuskorisnika)
+		public KorisnikDB(int id, string korime, string email, string lozinka, string ime, string prezime, string rodjenje, string adresa, byte[] slika, string tipkorisnika, string statuskorisnika)
 		{
 			this.id = id;
 			this.korime = korime;
@@ -52,7 +52,7 @@ namespace onlinedostava.DBModeli
 		public string Prezime { get => prezime; set => prezime = value; }
 		public string Rodjenje { get => rodjenje; set => rodjenje = value; }
 		public string Adresa { get => adresa; set => adresa = value; }
-		public string Slika { get => slika; set => slika = value; }
+		public byte[] Slika { get => slika; set => slika = value; }
 		public string Tipkorisnika { get => tipkorisnika; set => tipkorisnika = value; }
 		public string Statuskorisnika { get => statuskorisnika; set => statuskorisnika = value; }
 	}

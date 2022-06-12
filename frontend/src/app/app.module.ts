@@ -15,6 +15,7 @@ import {
 import { PorudzbineComponent } from './Komponente/porudzbine/porudzbine/porudzbine.component';
 import { NovatrenutnaporudzbinaComponent } from './Komponente/novatrenutnaporudzbina/novatrenutnaporudzbina/novatrenutnaporudzbina.component';
 import { NoveporudzbineComponent } from './Komponente/noveporudzbine/noveporudzbine/noveporudzbine.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     LoginregistracijaComponent,
@@ -25,7 +26,12 @@ import { NoveporudzbineComponent } from './Komponente/noveporudzbine/noveporudzb
     NovatrenutnaporudzbinaComponent,
     NoveporudzbineComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
